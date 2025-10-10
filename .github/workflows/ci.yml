@@ -50,4 +50,4 @@ jobs:
       run: cargo audit
 
     - name: Another
-      run: echo 'test'
+      run: echo 'test 2'
