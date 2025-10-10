@@ -26,9 +26,7 @@ jobs:
         key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
 
     - name: Install Rust CI Deps
-      run: \
-        cargo install cargo-audit &&
-        cargo install llvm-cov
+      run: cargo install cargo-audit cargo-llvm-cov
 
 
     - name: Check
