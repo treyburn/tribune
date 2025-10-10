@@ -48,6 +48,3 @@ jobs:
 
     - name: Audit
       run: cargo audit
-
-    - name: Another
-      run: echo 'test 2'
