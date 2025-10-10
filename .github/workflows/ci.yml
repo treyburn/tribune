@@ -22,7 +22,7 @@ jobs:
         path: |
           ~/.cargo/registry
           ~/.cargo/git
-          ~/.cargo/binll -a ~/.c
+          ~/.cargo/bin
           target
         key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
 
