@@ -28,7 +28,10 @@ jobs:
           ~/.cargo/git
           ~/.cargo/bin
           target
-        key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+        key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}-${{ github.ref }}
+        restore-keys: |
+          ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}-main
+          ${{ runner.os }}-cargo-
 
     - name: Install Rust CI Deps
       run: cargo install cargo-audit cargo-llvm-cov || true
