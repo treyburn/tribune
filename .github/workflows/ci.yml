@@ -52,6 +52,3 @@ jobs:
 
     - name: Audit
       run: cargo audit
-
-    - name: Cache hit check
-      run: echo "Cache hit"
