@@ -26,9 +26,7 @@ jobs:
         key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
 
     - name: Install Rust CI Deps
-      run: \
-        rustup component add clippy rustfmt && \
-        cargo install cargo-audit
+      run: cargo install cargo-audit
 
 
     - name: Check
