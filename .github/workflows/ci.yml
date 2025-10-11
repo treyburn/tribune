@@ -36,7 +36,7 @@ jobs:
       run: rustup update stable
 
     - name: Install Rust CI Deps
-      run: cargo install cargo-audit cargo-llvm-cov || true
+      run: cargo install cargo-audit cargo-llvm-cov
 
     - name: Check
       run: cargo check
