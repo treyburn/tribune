@@ -24,19 +24,19 @@ jobs:
       uses: actions/cache@v4
       with:
         path: |
-          ~/.cargo/registry
-          ~/.cargo/git
-          ~/.cargo/bin
+          ~/.cargo
           target
         key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}-${{ github.ref }}
         restore-keys: |
-          ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}-main
+          ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}-refs/heads/main
           ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}-
           ${{ runner.os }}-cargo-
 
+    - name: Install latest rust
+      run: rustup update stable
+
     - name: Install Rust CI Deps
       run: cargo install cargo-audit cargo-llvm-cov || true
-
 
     - name: Check
       run: cargo check
