@@ -9,7 +9,8 @@ async fn health_check_works() {
 
     // Act
     let response = client
-        .get(format!("{}/health_check", addr))
+        // use the server address our test helper returned
+        .get(format!("{addr}/health_check"))
         .send()
         .await
         .expect("Failed to send get request.");
@@ -21,7 +22,9 @@ async fn health_check_works() {
 
 // launch our app in the background
 fn spawn_app() -> String {
+    // create a listener
     let listener = TcpListener::bind("127.0.0.1:0").expect("Failed to bind to random port.");
+    // then interrogate it's port
     let port = listener
         .local_addr()
         .expect("failed to get local address")
@@ -30,5 +33,6 @@ fn spawn_app() -> String {
 
     let _ = tokio::spawn(server);
 
-    format!("http://127.0.0.1:{}", port)
+    // use the port to return our fully formed address
+    format!("http://127.0.0.1:{port}")
 }
