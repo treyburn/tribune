@@ -1,0 +1,4 @@
+[advisories]
+# h2 0.3 is pulled in via actix-web -> actix-http (http2 feature); the fix is
+# only in h2 >=0.4.16, which actix-http 3.x doesn't support yet.
+ignore = ["RUSTSEC-2026-0258"]
