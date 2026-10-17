@@ -10,7 +10,7 @@ async fn health_check_works() {
     // Act
     let response = client
         // use the server address our test helper returned
-        .get(format!("{addr}/health_check"))
+        .get(format!("{addr}/healthz"))
         .send()
         .await
         .expect("Failed to send get request.");
