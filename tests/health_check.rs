@@ -1,11 +1,9 @@
-use std::io::Error;
-
 use reqwest::Client;
 
 #[tokio::test]
 async fn health_check_works() {
     //Arrange
-    spawn_app().await.expect("Failed to spawn app.");
+    spawn_app();
     let client = Client::new();
 
     // Act
@@ -21,6 +19,8 @@ async fn health_check_works() {
 }
 
 // launch our app in the background
-async fn spawn_app() -> Result<(), Error> {
-    todo!()
+fn spawn_app() {
+    let server = tribune::run().expect("Failed to bind the server to the address.");
+
+    tokio::spawn(server);
 }
