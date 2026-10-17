@@ -20,7 +20,7 @@ async fn health_check_works() {
 
 // launch our app in the background
 fn spawn_app() {
-    let server = tribune::run().expect("Failed to bind the server to the address.");
+    let server = tribune::run("127.0.0.1:0").expect("Failed to bind the server to the address.");
 
     tokio::spawn(server);
 }
